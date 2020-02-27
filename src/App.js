@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import { Container, Row, Col } from 'react-bootstrap'
 import { Web3SignIn } from './components/account/Web3SignIn';
 import { CurrentUserContext } from './contexts/Store';
-
+import Flex, { FlexItem } from 'styled-flex-component';
 
 function App() {
   const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
@@ -10,19 +9,19 @@ function App() {
 
   return (
     <div className="App">
-      <Container>
-        <Row>
-          <Col>1 of 2</Col>
-          <Col>
+      <Flex center full column>
+        <Flex row>
+          <FlexItem >1 of 2</FlexItem>
+          <FlexItem >
             {currentUser && currentUser.username ? (<p>{currentUser.username}</p>) : (<Web3SignIn setCurrentUser={setCurrentUser} />)}
-          </Col>
-        </Row>
-        <Row>
-          <Col>1 of 3</Col>
-          <Col>2 of 3</Col>
-          <Col>3 of 3</Col>
-        </Row>
-      </Container>
+          </FlexItem>
+        </Flex>
+        <Flex row >
+          <FlexItem >1 of 3</FlexItem>
+          <FlexItem >2 of 3</FlexItem>
+          <FlexItem >3 of 3</FlexItem>
+        </Flex>
+      </Flex>
     </div>
   );
 }
